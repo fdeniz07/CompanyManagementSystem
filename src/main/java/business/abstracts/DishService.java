@@ -1,4 +1,4 @@
-package main.java.Business.abstracts;
+package main.java.business.abstracts;
 
 import main.java.entities.concretes.Dish;
 

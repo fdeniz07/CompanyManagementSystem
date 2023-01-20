@@ -1,8 +1,5 @@
 package main.java.application.console.restaurant;
 
-import main.java.Business.abstracts.OrderService;
-import main.java.entities.concretes.Dish;
-
 import java.util.Scanner;
 
 public class RestaurantBillGenerator {

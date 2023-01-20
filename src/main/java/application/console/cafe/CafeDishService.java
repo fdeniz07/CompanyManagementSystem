@@ -1,6 +1,6 @@
 package main.java.application.console.cafe;
 
-import main.java.Business.abstracts.DishService;
+import main.java.business.abstracts.DishService;
 import main.java.entities.concretes.Dish;
 
 import java.util.ArrayList;

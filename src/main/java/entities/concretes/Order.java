@@ -10,6 +10,8 @@ public class Order {
     public Order(Dish dish, int numOfDish) {
         this.dish = dish;
         this.numOfDish = numOfDish;
+        setPrice();
+        orderCode++;
     }
 
     public void setOrderCode(int orderCode) { //setter methot

@@ -1,7 +1,7 @@
 package main.java.Business.abstracts;
 
-import main.java.application.console.cafe.CafeService;
-import main.java.application.console.restaurant.RestaurantService;
+import main.java.application.console.cafe.CafeDishService;
+import main.java.application.console.restaurant.RestaurantDishService;
 import main.java.entities.concretes.Dish;
 import main.java.entities.concretes.Order;
 
@@ -9,54 +9,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class OrderService {
+public abstract class OrderService {
 
     Scanner scanner = new Scanner(System.in);
-    List<Order> orderList = new ArrayList<>();
+    protected List<Order> orderList = new ArrayList<>();
 
 
-    public void createOrder(RestaurantService restaurantService) {
+    public void createOrder(DishService dishService) {
 
-        int dishCode = -1;
-        while (dishCode != 0) {
-            System.out.println("Lutfen Urun Kodu Giriniz :  (CIKIS : 0)");   ///  Burda da Method Overloading oldu
-            dishCode = scanner.nextInt();
-            Dish dish = restaurantService.findDishByCode(dishCode);
-            if (dish.getCode() > 0) {
-                System.out.print("Adet Giriniz : ");
-                int num = scanner.nextInt();
-                Order order = new Order(dish, num);
-                order.setOrderCode(1000 + this.orderList.size());
-                this.orderList.add(order);
-            }
-            for (Order order : this.orderList) {
-                System.out.printf("Siparis Kodu :%-5s  Lezzet Kodu :%-3s     Adi :%-20s  Adet : %-3s \n",
-                        order.orderCode, order.dish.getCode(), order.dish.getName(), order.numOfDish);
-            }
-        }
+//        int dishCode = -1;
+//        while (dishCode != 0) {
+//            System.out.println("Lutfen Urun Kodu Giriniz :  (CIKIS : 0)");   ///  Burda da Method Overloading oldu
+//            dishCode = scanner.nextInt();
+//            Dish dish = restaurantService.findDishByCode(dishCode);
+//            if (dish.getCode() > 0) {
+//                System.out.print("Adet Giriniz : ");
+//                int num = scanner.nextInt();
+//                Order order = new Order(dish, num);
+//                order.setOrderCode(1000 + this.orderList.size());
+//                this.orderList.add(order);
+//            }
+//            for (Order order : this.orderList) {
+//                System.out.printf("Siparis Kodu :%-5s  Lezzet Kodu :%-3s     Adi :%-20s  Adet : %-3s \n",
+//                        order.orderCode, order.dish.getCode(), order.dish.getName(), order.numOfDish);
+//            }
+//        }
     }
 
 
-    public void createOrder(CafeService cafeService) {
-        int dishCode = -2;
-        while (dishCode != 0) {
-            System.out.println("Lutfen Urun Kodu Giriniz :  (CIKIS : 0)");
-            dishCode = scanner.nextInt();
-            Dish dish = cafeService.findDishByCode(dishCode);
-            if (dish.getCode() > 0) {
-                System.out.print("Adet Giriniz : ");
-                int num = scanner.nextInt();
-                Order order = new Order(dish, num);
-                order.setOrderCode(1000 + this.orderList.size());
-                this.orderList.add(order);
-            }
-            for (Order order : this.orderList) {
-                System.out.printf("Siparis Kodu :%-5s  Lezzet Kodu :%-3s     Adi :%-20s Adet : %-3s \n",
-                        order.orderCode, order.dish.getCode(), order.dish.getName(), order.numOfDish);
-            }
-        }
 
-    }
 
     public void deleteOrder() {
         boolean isValid = true;
@@ -97,4 +78,5 @@ public class OrderService {
 
     }
 
+    public abstract void createOrder(RestaurantDishService restaurantDishServicedishService);
 }

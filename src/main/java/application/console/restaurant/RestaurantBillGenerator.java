@@ -1,7 +1,7 @@
 package main.java.application.console.restaurant;
 
 import main.java.Business.abstracts.OrderService;
-import main.java.entities.concretes.Order;
+import main.java.entities.concretes.Dish;
 
 import java.util.Scanner;
 
@@ -9,15 +9,15 @@ public class RestaurantBillGenerator {
 
     public void sectorRestaurant() {
 
-        RestaurantService restaurantService = new RestaurantService();
+        RestaurantDishService restaurantService = new RestaurantDishService();
         restaurantService.fillDishList();
 
-        OrderService orderService = new OrderService();
+       RestaurantOrderService restaurantOrderService = new RestaurantOrderService();
 
     }
 
 
-    public void getSelectionMenu(RestaurantService restaurantService, OrderService orderService) {
+    public void getSelectionMenu(RestaurantDishService restaurantDishService, RestaurantOrderService restaurantOrderService) {
         int select = -1;
         while (select != 0) {
             Scanner sc = new Scanner(System.in);
@@ -34,16 +34,16 @@ public class RestaurantBillGenerator {
 
             switch (select) {
                 case 1:
-                    restaurantService.showMenu();
+                    restaurantDishService.showMenu();
                     break;
                 case 2:
-                    orderService.createOrder(restaurantService);
+                    restaurantOrderService.createOrder(restaurantDishService);
                     break;
                 case 3:
-                    orderService.deleteOrder();
+                    restaurantOrderService.deleteOrder();
                     break;
                 case 4:
-                    orderService.printBill();
+                    restaurantOrderService.printBill();
                     break;
                 case 0:
                     break;

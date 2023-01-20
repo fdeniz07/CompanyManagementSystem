@@ -6,7 +6,7 @@ import main.java.entities.concretes.Dish;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CafeService extends DishService {
+public class CafeDishService extends DishService {
 
     List<Dish> cafeDishList = new ArrayList<>();
 
@@ -28,14 +28,14 @@ public class CafeService extends DishService {
 
     @Override
     public void showMenu() {
-        System.out.println("                 Kafe  Lezzetlerimiz                  ");
+        System.out.println("                  Lezzetlerimiz                  ");
         System.out.printf("%-3s    %-20s   %-5s \n", "Kod", "Adi", "Fiyat");
         System.out.printf("%-3s    %-20s   %-5s \n", "---", "---", "-----");
-        for (Dish a : this.cafeDishList) {
-            System.out.printf("%-3s    %-20s   %-5s  Lira\n", a.getCode(), a.getName(), a.getPrice());
+        for (Dish w:this.cafeDishList){
+            System.out.printf("%-3s    %-20s   %-5s \n",w.getCode(),w.getName(),w.getPrice());
         }
-
     }
+
 
     @Override
     public Dish findDishByCode(int code) {

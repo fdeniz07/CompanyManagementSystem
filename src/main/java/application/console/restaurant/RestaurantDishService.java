@@ -6,7 +6,7 @@ import main.java.entities.concretes.Dish;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantService  extends DishService {
+public class RestaurantDishService extends DishService {
 
     List<Dish> dishList=new ArrayList<>();
 
@@ -36,6 +36,17 @@ public class RestaurantService  extends DishService {
     }
 
     @Override
+    public void showMenu() {
+        fillDishList();
+        System.out.println("                  Lezzetlerimiz                  ");
+        System.out.printf("%-3s    %-20s   %-5s \n", "Kod", "Adi", "Fiyat");
+        System.out.printf("%-3s    %-20s   %-5s \n", "---", "---", "-----");
+       for (Dish w:this.dishList){
+           System.out.printf("%-3s    %-20s   %-5s \n",w.getCode(),w.getName(),w.getPrice());
+       }
+    }
+
+    @Override
     public Dish findDishByCode(int code) {
         if(code==0){
             System.out.println("Ana Menuye Yonlendiriliyorsunuz...");
@@ -49,4 +60,5 @@ public class RestaurantService  extends DishService {
         }
         return new Dish(0,"",0);
     }
+
 }
